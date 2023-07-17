@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:new_project/pages/widgets/myButton.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -45,13 +46,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              GestureDetector(
+              MyButton(
                   onTap: () {
                     FirebaseAuth.instance.signOut();
                   },
-                  child: Container(
-                    child: Text('LOgout'),
-                  ))
+                  sText: 'Sign Out'),
             ],
           ),
         ),
