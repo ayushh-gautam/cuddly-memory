@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:new_project/pages/loginPages/signup.dart';
 import 'package:new_project/pages/modules/authService.dart';
 import 'package:new_project/pages/widgets/myButton.dart';
@@ -53,6 +52,8 @@ class _LoginPageState extends State<LoginPage> {
 
   final emailController = TextEditingController();
   final passController = TextEditingController();
+
+  bool _obsecureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +89,10 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   MyTextField(
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Colors.green,
+                    ),
                     myController: emailController,
                     mytext: 'Enter your email.',
                     obsecureText: false,
@@ -96,9 +101,23 @@ class _LoginPageState extends State<LoginPage> {
                     height: 15,
                   ),
                   MyTextField(
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: Colors.green,
+                    ),
+                    suffixicon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _obsecureText = !_obsecureText;
+                        });
+                      },
+                      child: Icon(_obsecureText
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                    ),
                     myController: passController,
                     mytext: 'Enter your password',
-                    obsecureText: true,
+                    obsecureText: _obsecureText,
                   ),
 
                   SizedBox(

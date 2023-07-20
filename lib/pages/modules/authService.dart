@@ -1,10 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   signInWithGoogle() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-
     final GoogleSignInAccount? guser = await GoogleSignIn().signIn();
 
     // authentication

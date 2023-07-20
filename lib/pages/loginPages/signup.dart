@@ -18,6 +18,8 @@ class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final cpassController = TextEditingController();
+  bool _passobsecureText = false;
+  bool _cpassobsecureText = false;
 
   void register() async {
     if (passController.text == cpassController.text) {
@@ -74,6 +76,10 @@ class _SignUpState extends State<SignUp> {
               height: 30,
             ),
             MyTextField(
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Colors.green,
+                ),
                 mytext: 'Enter your email',
                 obsecureText: false,
                 myController: emailController),
@@ -81,15 +87,43 @@ class _SignUpState extends State<SignUp> {
               height: 20,
             ),
             MyTextField(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.green,
+                ),
                 mytext: 'Enter your password',
-                obsecureText: false,
+                suffixicon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _passobsecureText = !_passobsecureText;
+                    });
+                  },
+                  child: Icon(_passobsecureText
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
+                obsecureText: _passobsecureText,
                 myController: passController),
             SizedBox(
               height: 20,
             ),
             MyTextField(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.green,
+                ),
                 mytext: 'Confirm password',
-                obsecureText: false,
+                obsecureText: _cpassobsecureText,
+                suffixicon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _cpassobsecureText = !_cpassobsecureText;
+                    });
+                  },
+                  child: Icon(_cpassobsecureText
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
                 myController: cpassController),
             SizedBox(
               height: 20,

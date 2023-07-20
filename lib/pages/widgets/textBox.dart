@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatelessWidget {
   String? mytext;
   bool obsecureText;
+  Widget? suffixicon;
+  Widget? prefixIcon;
   TextEditingController myController;
 
   MyTextField({
     Key? key,
     required this.mytext,
     required this.obsecureText,
+    this.suffixicon,
+    this.prefixIcon,
     required this.myController,
   }) : super(key: key);
 
@@ -21,6 +25,8 @@ class MyTextField extends StatelessWidget {
         controller: myController,
         obscureText: obsecureText,
         decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixicon,
             border: InputBorder.none,
             fillColor: Colors.grey.shade100,
             filled: true,
