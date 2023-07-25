@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:new_project/pages/widgets/myButton.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,6 +50,7 @@ class _HomePageState extends State<HomePage> {
               MyButton(
                   onTap: () {
                     FirebaseAuth.instance.signOut();
+                    GoogleSignIn().signOut();
                   },
                   sText: 'Sign Out'),
             ],
